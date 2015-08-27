@@ -18,16 +18,14 @@ SlidingDancer.prototype.step = function() {
   //this.setPosition(this.top, this.left-5);
   if (!this.stopMoving) {
   	var bodWidth = window.innerWidth;
-	if (this.left < 40) {
-		this.direction = 25;
-	}
-	// else if we're within 40 of the right border
-	else if (window.innerWidth-this.left < 40) {
-		this.direction = -25;
-	}
-	this.left += this.direction;
-
-	this.setPosition(this.top, this.left);
+  	if (this.left < 40) {
+  		this.direction = 25;
+  	// else if we're within 40 of the right border
+    } else if (window.innerWidth-this.left < 40) {
+      this.direction = -25;
+    }
+    this.left += this.direction;
+  	this.setPosition(this.top, this.left);
   }
 };
 

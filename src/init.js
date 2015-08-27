@@ -37,7 +37,6 @@ $(document).ready(function(){
     Dancer.prototype.stopMoving = !Dancer.prototype.stopMoving;
     var numDancers = dancers.length;
     dancers.forEach(function(dnc, i, arr) {
-      
       dnc.lineup(i, numDancers);
     });
 
