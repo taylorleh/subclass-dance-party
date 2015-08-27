@@ -7,22 +7,17 @@ function Dancer(top, left, timeBetweenSteps) {
   this.left = left;
 }
 Dancer.prototype.stopMoving = false;
-// on button click for lineup, set to true
 Dancer.prototype.lineup = function(ind, amt) {
-  // var increment = (window.innerWidth) / (amt + 1);
-  //this.left = (window.innerWidth / (amt + 1)) * (ind + 1);
   var horizAlign = window.innerHeight / 2;
   var vertAlign = ((window.innerWidth) / (amt + 1)) * (ind + 1);
 
   if (this.stopMoving) {
-    // this.setPosition(window.innerHeight / 2, increment * (ind+1));
     this.$node.animate({
       left:vertAlign+'px',
       top:horizAlign+'px'
     },2500);
   }
   else { 
-    //this.setPosition(this.top, this.left); 
     this.$node.animate({
       left: this.left+'px',
       top: this.top+'px'
@@ -31,9 +26,7 @@ Dancer.prototype.lineup = function(ind, amt) {
 };
 Dancer.prototype.step = function() {
 
-  setTimeout(function() { 
-    this.step(); 
-  }.bind(this), this.timeBetweenSteps);
+  setTimeout(this.step.bind(this), this.timeBetweenSteps);
   
 }
 Dancer.prototype.setPosition = function(top, left) {

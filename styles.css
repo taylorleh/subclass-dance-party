@@ -27,7 +27,7 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
-.bee {
+.bee, .farmer {
   border: none;
   background-repeat: no-repeat;
   border-radius: 0;
