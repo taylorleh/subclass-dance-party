@@ -11,7 +11,6 @@ Dancer.prototype.stopMoving = false;
 Dancer.prototype.lineup = function(ind, amt) {
   var increment = (window.innerWidth) / (amt + 1);
   //this.left = (window.innerWidth / (amt + 1)) * (ind + 1);
-  debugger;
   if (this.stopMoving) {
     this.setPosition(window.innerHeight / 2, increment * (ind+1)); 
   }

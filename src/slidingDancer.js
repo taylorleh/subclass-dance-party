@@ -2,6 +2,8 @@
 function SlidingDancer(top, left, timeBetweenSteps){
   this._blinkyStep = BlinkyDancer.prototype.step;
   BlinkyDancer.apply(this, arguments);
+  this.$node.addClass('bee');
+  this.$node.prepend('<img src="sprites/Bee_Sprites_2.png">');
   // this.$node.css('position', 'absolute');
   this.direction = Math.floor(Math.random()*2) ? -25 : 25;
 }

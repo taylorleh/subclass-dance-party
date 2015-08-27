@@ -25,3 +25,9 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.bee {
+  border: none;
+  background-repeat: no-repeat;
+  border-radius: 0;
+}
