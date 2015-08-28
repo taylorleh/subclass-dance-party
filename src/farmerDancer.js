@@ -1,4 +1,10 @@
 function FarmerDancer(top, left, timeBetweenSteps) {
+  top = Math.random()*(window.innerHeight*.2)+(window.innerHeight*.65);
+  this.leftBound = 0;
+  this.topBound = 0;
+  this.bottomBound = window.innerHeight;
+  this.rightBound = window.innerWidth;
+  this.change = 75;
   this._oldstep = Dancer.prototype.step;
   Dancer.apply(this, arguments);
   this.$node.prepend('<img src="sprites/farmer.gif">');
@@ -16,8 +22,8 @@ FarmerDancer.prototype.step = function() {
   if (!this.stopMoving) {
 
     // if the farmer is really close to a bee, shrink and regrow
-    if (this.checkCollision()) {
-      // this.$node.children()[0];
+    if (this.hasAnyCollisions(SlidingDancer,25)) {
+      
       this.$node.children().eq(0).animate({
         height:'-=40px'
       }, {
@@ -32,33 +38,7 @@ FarmerDancer.prototype.step = function() {
     }
 
     else {
-      var leftChange = Math.random()*change-(.5*change);
-      var topChange = Math.random()*change-(.5*change);
-
-      this.$node.animate({
-        left: Math.max(this.left+leftChange,0)+'px',
-        top: Math.max(this.top+topChange,0)+'px'
-      },{
-        duration:randomTime,
-        done:function(){
-          this._oldstep();
-        }.bind(this)
-
-      });
+      this.move(this.change, 0, this.leftBound, this.topBound, this.rightBound, this.bottomBound, randomTime);
     }
   }
-}
-
-FarmerDancer.prototype.checkCollision = function() {
-  for (var i = 0; i < window.dancers.length; i++) {
-    if (window.dancers[i] instanceof SlidingDancer) {
-      var leftDist = this.left - window.dancers[i].left;
-      var topDist = this.top - window.dancers[i].top;
-
-      var distance = Math.sqrt(Math.pow(leftDist,2)+Math.pow(topDist,2));
-
-      if (distance < 25) { return true; }
-    }
-  }
-  return false;
 }
