@@ -20,7 +20,6 @@ SlidingDancer.prototype.step = function() {
     window.dancers.forEach(function(dnc){
       if (dnc instanceof FarmerDancer) {
         if (this.checkCollision(dnc, 200) && !this.following) {
-          console.log(this.$node[0], 'following: ', dnc.$node[0]);
           this.following = dnc; 
         }
       }

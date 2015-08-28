@@ -1,6 +1,20 @@
 $(document).ready(function(){
   window.dancers = [];
 
+  $("audio")[0].play();
+  const numBees = 200;
+  setTimeout(function() {
+    for (var i =0; i < numBees; i++) {
+      var dancer = new SlidingDancer(
+        $("body").height() * Math.random(),
+        $("body").width() * Math.random(),
+        Math.random() * 1000
+      );
+      dancers.push(dancer);
+      $('body').append(dancer.$node);
+    }
+  },19500);
+
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -59,6 +73,10 @@ $(document).ready(function(){
       dancers.push(dancer);
       $('body').append(dancer.$node);
     }
+  });
+
+  $("#pauseButton").on("click", function(event) {
+    $("audio")[0].pause();
   });
 });
 
